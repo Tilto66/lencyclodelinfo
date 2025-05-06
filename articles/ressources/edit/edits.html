@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<script src="../socket.io.js"></script>
+<head>
+    <!-- Mon stylesheet -->
+    <link rel="stylesheet" href="../../css/main.css">
+    <!-- Mon js -->
+    <script src="/js/main.js"></script>
+    <!-- bootstrap (3) - pour le style de la page. -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+ 
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L'encyclopédie de l'info - Editeurs de code</title>
+</head>
+<body bgcolor="grey">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <a href="/accueil.html" class="navbar-brand">L'encyclo de l'info - <script>document.write(localStorage.getItem("username"));</script></a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="../../../accueil.html">Accueil</a></li>
+            <li class="active"><a href="../../../index.html">Methodes de connexion</a></li>
+            <li class="active"><a href="../../../idx.html" class="active">Index des articles</a></li>
+            <li class="active"><a href="../../../credits.html">A propos...</a></li>
+        </ul>
+    </nav>
+    <div class="article">
+        <p>Voici la liste des éditeurs de  (appelés IDE): <br>
+        <a href="https://code.visualstudio.com/download">Visual studio code:</a> éditeur réputé, mais consomme beaucoup de ressources !<br>
+        <a href="https://github.com/VSCodium/vscodium/releases/download/1.87.2.24072/VSCodiumSetup-x64-1.87.2.24072.exe">VSCodium:</a> Une version de visual studio code, sans toute la télémétrie et "l'espionnage" de Microsoft; plus rapide<br>
+        <a href="https://notepad-plus-plus.org/downloads/">Notepad ++:</a><font style="color: blue;">Extrêmement recommendé pour une utilisation rapide !</font> Notepad ++ est un editeur de code très rapide, avec une verison portable sans installation pour l'emporter partout ! Parfait pour les développeurs du dimanche !
+        <br><a href="vscode.dev">VSCode Web:</a> l'édition web de visual studio code pas recommendé car consomme beaucoup de ressources, presque plus que la version non web</p>
+        <br><p>Avec un de ces IDEs, vous pouvez avoir une bonne session de code, rapide ou longue !</p>
+    </div>

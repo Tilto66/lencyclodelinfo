@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<script src="../socket.io.js"></script>
+<head>
+    <!-- Mon stylesheet -->
+    <link rel="stylesheet" href="../../css/main.css">
+    <!-- Mon js -->
+    <script src="/js/main.js"></script>
+    <!-- bootstrap (3) - pour le style de la page. -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+ 
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L'encyclopédie de l'info - Le HTML</title>
+</head>
+<body bgcolor="grey">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <a href="/accueil.html" class="navbar-brand">L'encyclo de l'info - <script>document.write(localStorage.getItem("username"));</script></a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="../../accueil.html">Accueil</a></li>
+            <li class="active"><a href="../../index.html">Methodes de connexion</a></li>
+            <li class="active"><a href="../../idx.html" class="active">Index des articles</a></li>
+            <li class="active"><a href="../../credits.html">A propos...</a></li>
+        </ul>
+    </nav>
+    <div class="txt article">
+        <center>
+        <h1 class="titre">
+            HTML (HyperText Markup Language)
+        </h1>
+        </center>
+        <div class="int html-def"><p><strong>HTML</strong> signifie « <em>HyperText Markup Language</em> » qu'on peut traduire par « langage de balises pour l'hypertexte ». Il est utilisé afin de créer et de représenter le contenu d'une page web et sa structure. D'autres technologies sont utilisées avec HTML pour décrire la présentation d'une page (<a href="/fr/docs/Web/CSS">CSS</a>) et/ou ses fonctionnalités interactives (<a href="/fr/docs/Web/JavaScript">JavaScript</a>).</p>
+            <p>L'« hypertexte » désigne les liens qui relient les pages web entre elles, que ce soit au sein d'un même site web ou entre différents sites web. Les liens sont un aspect fondamental du Web. Ce sont eux qui forment cette « toile » (ce mot est traduit par <em>web</em> en anglais). En téléchargeant du contenu sur l'Internet et en le reliant à des pages créées par d'autres personnes, vous devenez un participant actif du World Wide Web.</p>
+            <p>Le langage HTML utilise des « balises » pour annoter du texte, des images et d'autres contenus afin de les afficher dans un navigateur web. Le balisage HTML comprend des « éléments » spéciaux tels que :<code>&lt;head&gt;</code>,<code>&lt;title&gt;</code>,<code>&lt;body&gt;</code>, <code>&lt;header&gt;</code>, <code>&lt;footer&gt;</code>, <code>&lt;li&gt;</code> et bien d'autres.</p>
+            <p>En HTML, les balises sont insensibles à la casse et peuvent aussi bien être écrites en minuscules, en majuscules voire avec un mélange des deux. Autrement dit, la balise <code>&lt;title&gt;</code> pourrait très bien être écrite comme <code>&lt;Title&gt;</code>, <code>&lt;TiTle&gt;</code> ou d'une autre façon.</p>
+            <br><p>Bon, <strong>Passons tout de suite a la création de ta première page web !</strong></p>
+        </div>
+        <div class="int html-ex">
+            <center><h1 class="titre">
+                Création de votre premier site.
+            </h1></center>
+            <h2>Téléchargement d'un ide</h2>
+            <p>Pour commencer a coder, il vous faudrait justement un logiciel pour coder ! on appelle ca un <strong>IDE</strong>. il y en a beaucoup avec leurs + et leurs -, moi j'utilise VSCodium, et si vous ne voulez pas d'installation, il y a une version web juste <a href="http://vscode.dev">la</a>. Vous pouvez aussi voir la liste des éditeurs avec leurs lien d'installation <a href="../ressources/edit/edits.html">ici</a>.</p>
+            <h2>Codage</h2>
+            <p>Passons au codage. commencez par appuyer sur <p style="color: lightblue;">Créer un fichier</p> comme sous l'image ci dessous.</p>
+            <img src="./img1.jpg" alt="Image indiquant ou cliquer">
+            <br>
+            <p>Puis selectionnez sur fichier texte, appuyez sur <p style="color: lightblue;">selectionnez un language de programmation</p> puis selectionnez <strong>HTML</strong></p>
+            <br><br>
+            <p>Une fois que cela est fait, tapez  <<code>html</code>>, (<<code>html</code>> est l'élément racine d'un site., tout ce qui appartient au site doit être écrit dedans.) comme sur l'image ci dessous:</p>
+            <img src="./img2.jpg" alt="Image montrant ce qu'il faut écrire">
+            <p>cela fait, appuyez sur entrée et tapez <<code>head</code>> re-appuyez sur entrée et tapez <<code>title</code>>et entre les deux balises, tapez le titre de votre page. </p>
+            <img src="./img3.jpg" alt="">
+            <br>
+            <tip>Note: Visual Studio Code ajoute automatiquement les balises de fermeture.</tip>
+            <p>Vous avez marqué votre titre? Oui? Alors enregistrez sur le dossier de votre choix <code>(Ctrl + S)</code>, sors de la balise <<code>head</code>> et tapez <<code>body</code>> Appuyez sur entrez et... tout est prêt ! Passons au contenu de votre site.</p>
+            <br><br>
+            <center><h1 class="titre">
+                Contenu du site.
+            </h1></center>
+            <p>Par contre, ici il va falloir choisir ce que vous voulez sur la page web.</p>
+            <li>
+                <a href="#txt">Ajouter du texte</a><br>
+                <a href="#img">Ajouter une image</a><br>
+                <a href="#vid">Ajouter une vidéo</a><br>
+                <a href="#advance">Balise avancées</a>
+            </li>
+            <div id="txt">
+                <h2 class="titre">
+                    Ajoutez du texte
+                </h2><br>
+                <p>La base serait d'afficher du texte a votre site (Après c'est comme vous voulez, du moment ou vous créez ! :D)</p><br>
+                <p>En HTML, la balise de texte est la balise <<code>p</code>></p><br>
+                <tip>Avant de continuer, assurez vous d'être bien a l'intérieur de la balise <<code>body</code>>.</tip>
+                <p>Donc vous avez compris: on va la mettre dans notre page !</p><br>
+                <p><<code><p>Votre Texte...</code><<code>/p</code>></p>
+                <img src="./img6.JPG" alt="">
+            </div>
+            <br>
+            <div id="img">
+                <h2 class="titre">
+                    Ajouter une image
+                </h2><br>
+                <p>Allons ajoutez une image a votre page !</p>
+                <br>
+                <p>Pour commencer, trouver une belle image sur internet et enregistrez la dans le dossier de votre page, moi j'en ai une, et c'est celle ci:</p><br>
+                <img src="./img4.jpeg" alt="TROP CHOU !"><br>
+                <p>Trop mignon !☺</p><br>
+                <tip>Avant de continuer, assurez vous d'être bien a l'intérieur de la balise <<code>body</code>>.</tip>
+                <p>Pour l'intégrer sur la page, vous allez devoir taper ce code (attention suivez bien !):</p><br>
+                <p><<code>img src="./nomdelimage.extension" alt="description de votre image qui sera affichée si elle ne peut pas se charger"</code>>. <br>Ex:</p>
+                <img src="./img5.JPG" alt="">
+                <br><p>Vous pouvez le faire a l'infini !</p>
+            </div>
+            <br>
+            <div id="vid">
+                <h2 class="titre">
+                    Ajouter un fichier video/audio
+                </h2>
+                <p>C'est parti pour ajouter des vidéos !</p><br>
+                <p>La balise video/audio est: <<code>video></code>></p>
+                <br><p>En premier, cherchez une vidéo sur le web et enregistrez la dans le dossier de la page web.</p><br>
+                <p>Jai trouvé celle la:</p><br>
+                <video src="https://cdn.coverr.co/videos/coverr-ai-generated-golden-hour-mountain-skiing/1080p.mp4"></video>
+                <br>
+                <tip>Avant de continuer, assurez vous d'être bien a l'intérieur de la balise <<code>body</code>>.</tip>
+                <p>Puis, tapez ce code sur votre page:</p>
+                <br><p><<code>video src="./NomDuFichierAudioOuVideo.extension"</code>><<code>/video</code>></p>
+                <img src="./img7.JPG" alt="">
+            </div>
+            <br>
+            <div id="advance">
+                <h2 class="titre">
+                    Balises avancées
+                </h2>
+                <p style="color: red;">
+                ATTENTION: ceci est une partie avancée</p><br>
+                <p>Voici quelques balises:</p><br>
+                <li>
+                    <<code>br</code>>: Saut de ligne, ou <i>line break</i>,                    <br>
+                </li>
+                <li>
+
+                    <<code>h1-6</code>>: Texte plus ou moins gros,<br>
+                </li>
+                <li>
+                    <<code>a href="http://lien.com"</code>>Cliquez ici<<code>/a</code>>: Lien hypertexte
+                </li>
+            </div>
+        </div>
+    </div>
+    <br><br><br>
+    <div class="comms">
+        <h1>Commentaires:</h1>
+        <p id="refresh"></p>
+        <div id="coms">
+            <p id="comzone">
+
+            </p>
+            <br><br><br>
+
+            
+            <textarea name="sndcom" id="sndcom" rows="5" placeholder="Entrez votre commentaire ici..."></textarea>
+            <br>
+            <button onclick="send();" class="btn-primary boutonPtit">
+                Envoyez
+            </button>
+            <br><br>
+            <button class="btn-info boutonPtit" onclick="coms('refresh');">Rafraichir</button>
+        </div>
+        <center>
+            <h1 class="titre">
+                Merci d'avoir regardé cet article !
+                <h4>Visitez régulièrement le site pour découvrir des nouveautés !</h4>
+            </h1>
+        </center>
+    </div>
+</body>
+<script>
+
+const socket = io("http://dailya.freeboxos.fr:3630");
+socket.emit("message","Connecté !");
+let statusb = document.getElementById("refresh");
+let comelem = document.getElementById("sndcom");
+
+function coms(action){
+    if (action == "refresh"){
+        socket.emit("refresh","html", (response) => {
+            if (response == null){
+                statusb.style = "color: red;";
+                statusb.style = "color: red;";
+                statusb.textContent = "Aucun nouveaux commentaires.Essayez de reafraichir plus tard.";
+            }else if (response !== null) {
+                console.log(response)
+                statusb.style = "color: green;"
+                statusb.textContent = "Voici les commentaires trouvés :"
+                console.log(response);
+                let c1 = document.getElementById("comzone");
+                c1.innerHTML = response;
+            }
+        });
+    }else{
+        statusb.style = "color: red;";
+        statusb.innerHTML = `
+        <p><strong>La connection avec le serveur externe à échoué !</strong><br>
+        Mais, vous pouvez toujours regarder l'article!</p>
+        `;
+    }
+}
+
+function send(){
+    socket.emit("append","html",comelem.value, (response) => {
+        if (response == "200"){
+            statusb.style = "color: blue;";
+            statusb.textContent = "Commentaire enregistré! Actualisation...";
+            coms("refresh");
+
+        }
+    });
+}
+
+</script>
+</html>

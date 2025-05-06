@@ -1,0 +1,48 @@
+/* C'est le stylesheet. YA RIEN A VOIR CHER ESPION >:( */
+html{
+    background-color: rgb(255, 255, 255);
+}
+/*.txt{
+    background-color: white;
+    color: black;
+}*/
+.bouton{
+    height: 2cm;
+    width: 20cm;
+    border-radius: 0.5cm;
+}
+.article{
+    border-style: dashed;
+    border-top-color: #16DB93;
+    border-bottom-color: #A4036F;
+    border-left-color: #EFEA5A;
+    border-right-color: #FE5E41;
+}
+.boutonPtit{
+    height: 1cm;
+    width: 5cm;
+    border-radius: 0.5cm;
+}
+.titre{
+   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    size: 10cm;
+}
+.coms{
+    border-style: dashed;
+    border-top-color: #16DB93;
+    border-bottom-color: #A4036F;
+    border-left-color: #EFEA5A;
+    border-right-color: #FE5E41;
+}
+.int{
+    size: 5cm;
+}
+tip{
+    background-image: url("../tip.jpg");
+    border-style: ridge;
+    border-color: blue;
+}
+textarea{
+    border: none;
+    background-color:rgb(208, 220, 231);
+}

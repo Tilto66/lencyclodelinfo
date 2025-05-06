@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<script src="../socket.io.js"></script>
+<head>
+    <!-- Mon stylesheet -->
+    <link rel="stylesheet" href="../../css/main.css">
+    <!-- Mon js -->
+    <script src="/js/main.js"></script>
+    <!-- bootstrap (3) - pour le style de la page. -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+ 
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L'encyclopédie de l'info - Le CSS</title>
+</head>
+<body>
+    <div class="article">
+        <div class="titre">
+            <h1>Le CSS</h1>
+        </div>
+        <p>Sommaire:</p>
+        <a href="#wikip">Le CSS, c'est quoi?</a>
+        <a href="#crcss">Première customization</a>
+    <div id="wikip">
+        <div class="titre">
+            <h2>Le CSS, c'est quoi?</h2>
+        </div>
+        Les feuilles de style en cascade, généralement appelées CSS de l'anglais Cascading Style Sheets, forment un langage informatique qui décrit la présentation des documents HTML et XML. <br>
+        Les standards définissant CSS sont publiés par le World Wide Web Consortium (W3C). <br>
+        Introduit au milieu des années 1990, CSS devient couramment utilisé dans la conception de sites web et bien pris en charge par les navigateurs web dans les années 2000.
+    </div>
+    <div id="crcss">
+        <div class="titre">
+            <h2>Première customization</h2>
+        </div>
+        <p>Bon,vous l'avez compris, nous allons prendre le site venant de l'article sur <a href="../html/html.html">l'html</a> et nous allons le modifier. <br>
+            Mais avant, il faut connaitre quelques notions... <br><br></p>
+            <h3><b>L'id</b></h3><br>
+            <p>L'id est comme une <b>carte d'identitée</b> des <b>éléments</b> html. <br>
+            sur les éléments html, pour les spécifier, on utilise le paramètre <b>id</b><br>
+            exemple: <<code>p id="Textes"</code>><br>
+            Nous pouvons ensuite les utiliser en JavaScript (article très prochainement) ou en <a href="#">CSS</a>.</p>
+            <h3><b>La classe</b></h3><br>
+            <p>La classe est comme un <b>Nom de famille</b> chez les <b>éléments</b> html. <br>
+                Sur ces derniers, pour les spécifier, on utilise le paramètre <b>class</b><br>
+                exemple: <<code>p class="Textes"</code>>. <br>
+                Ces classes servent a selectionner des éléments en masse plutot que de les attribuer la même <b>id</b> pour chacun. <br>
+            </p>
+        </p>
+        <h3><b>Codage</b></h3><br>
+        <p>C'est parti pour customizer notre <a href="../html/html.html">précédent site</a>! <br>
+        Commençons par lancer <a href="../ressources/edit/edits.html">l'éditeur de code de votre choix</a>, puis ouvrez le répértoire ou se trouve la page web. <br>
+        Cela fait, creez un fichier avec le nom de votre choix, avec l'extension <code>.css</code><br>
+        Dans mon cas, cela va être <code>style.css</code>. <br>
+        Puis, ouvrez le; Nous voila au coeur du fichier. <br></p>
+        <h3><b>Au coeur du fichier</b></h3><br>
+        <p>Voyons voir, que voulez vous modifier?<br>
+        aidez vous avec la terminologie apprise précédemment! <br>
+        <a href="#class">Une classe</a><br>
+        <a href="#id">Une id</a><br>
+        <a href="#elem">Un élément</a><br>
+    <br>
+        <div id="class">
+            <h2>Modifier les éléments d'une classe</h2>
+        <br>
+        <p>Sur cette section, nous allons modifier l'appareance de tous les éléments <b>appartenant a une même classe.</b><br>
+        En css, les classes sont préfixées par <code>.</code><br>
+        Donc nous allons écrire: <br>
+        <code>
+            .MaClasse{
+
+            }
+        </code><br>
+        (Remplacez ma classe par le nom de votre classe.) <br>
+        Dans les accolades, mettez votre personalization.
+        <h3><b>Mettre de la <span id="rainbow" style="color: rgb(red, green, blue)">couleur</span></b></h3>
+        Pour mettre de la couleur, tapez (toujours dans les accolades) <code>color: couleur;</code>Et remplacez couleur par le nom de la couleur <b><font style="color: red;">EN ANGLAIS !!!!</font></b></p>
+        <br><i>Example:</i><br>
+        <code>.HelloTexte{
+            color: blue;
+        }
+        </code><br>
+        <p>Ce code met le contenu visible des éléments avec la classe <code>HelloTexte</code>en bleu. <br></p>
+        </div>
+        <br>
+        <div id="id">
+            <h2>Modifier les éléments avec un id spécifique</h2>
+            <br>
+            
+        <p>Sur cette section, nous allons modifier l'appareance de tous les éléments <b>appartenant a une id.</b><br>
+            En css, les id sont préfixées par <code>#</code><br>
+            Donc nous allons écrire: <br>
+            <code>
+                #IdTest{
+    
+                }
+            </code><br>
+            (Remplacez IdTest par l'id.) <br>
+            Dans les accolades, mettez votre personalization.
+            <h3><b>Mettre de la <span id="rainbow">couleur</span></b></h3>
+            Pour mettre de la couleur, tapez (toujours dans les accolades) <code>color: couleur;</code>Et remplacez couleur par le nom de la couleur <b><font style="color: red;">EN ANGLAIS !!!!</font></b></p>
+            <br><i>Example:</i><br>
+            <code>#Vert{
+                color: green;
+            }
+            </code><br>
+            <p>Ce code met le contenu visible des éléments avec la classe <code>Vert</code>en vert. <br></p>
+        </div>
+    </p>
+    <div id="elem">
+        <h2>Modifier certains éléments</h2>
+        <br>
+        
+    <p>Sur cette section, nous allons modifier l'appareance de tous les éléments selectionnés<br>
+        En css, pour selectionner des éléments, il faudra écrire le nom de l'éléments
+        Donc nous allons écrire: <br>
+        <code>
+            Element{
+
+            }
+        </code><br>
+        (Remplacez Element par le nom de l'élément.) <br>
+        Dans les accolades, mettez votre personalization.
+        <h3><b>Mettre de la <span id="rainbow">couleur</span></b></h3>
+        Pour mettre de la couleur, tapez (toujours dans les accolades) <code>color: couleur;</code>Et remplacez couleur par le nom de la couleur <b><font style="color: red;">EN ANGLAIS !!!!</font></b></p>
+        <br><i>Example:</i><br>
+        <code>#Vert{
+            color: green;
+        }
+        </code><br>
+        <p>Ce code met le contenu visible des éléments avec la classe <code>Vert</code>en vert. <br></p>
+    </div>
+</p>
+    </div>
+    <br><br><br>
+    <div class="comms">
+        <h1>Commentaires:</h1>
+        <p id="refresh"></p>
+        <div id="coms">
+            <p id="comzone">
+            </p>
+            <br><br><br>
+
+            
+            <textarea name="sndcom" id="sndcom" rows="5" placeholder="Entrez votre commentaire ici..."></textarea>
+            <br>
+            <button onclick="send();" class="btn-primary boutonPtit">
+                Envoyez
+            </button>
+            <br><br>
+            <button class="btn-info boutonPtit" onclick="coms('refresh');">Rafraichir</button>
+        </div>
+        <center>
+            <h1 class="titre">
+                Merci d'avoir regardé cet article !
+                <h4>Visitez régulièrement le site pour découvrir des nouveautés !</h4>
+            </h1>
+        </center>
+    </div>
+</body>
+
+<script>
+
+    const socket = io("http://dailya.freeboxos.fr:3630");
+    socket.emit("message","Connecté !");
+    let statusb = document.getElementById("refresh");
+    let comelem = document.getElementById("sndcom");
+    
+    function coms(action){
+        if (action == "refresh"){
+            socket.emit("refresh","html", (response) => {
+                if (response == null){
+                    statusb.style = "color: red;";
+                    statusb.style = "color: red;";
+                    statusb.textContent = "Aucun nouveaux commentaires.Essayez de reafraichir plus tard.";
+                }else if (response !== null) {
+                    console.log(response)
+                    statusb.style = "color: green;"
+                    statusb.textContent = "Voici les commentaires trouvés :"
+                    console.log(response);
+                    let c1 = document.getElementById("comzone");
+                    c1.innerHTML = response;
+                }
+            });
+        }else{
+            statusb.style = "color: red;";
+            statusb.innerHTML = `
+            <p><strong>La connection avec le serveur externe à échoué !</strong><br>
+            Mais, vous pouvez toujours regarder l'article!</p>
+            `;
+        }
+    }
+    
+    function send(){
+        socket.emit("append","html",comelem.value, (response) => {
+            if (response == "200"){
+                statusb.style = "color: blue;";
+                statusb.textContent = "Commentaire enregistré! Actualisation...";
+                coms("refresh");
+    
+            }
+        });
+    }
+    </script>
+</html>

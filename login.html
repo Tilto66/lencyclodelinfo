@@ -34,30 +34,35 @@
         <label for="mdp">Mot de passe:</label>
         <input type="password" class="form-control" id="mdp" required placeholder="Entrez ici...">
         <br>
-        <button onclick="loginf();" type="submit" class="btn-success bouton" value="Se connecter">Se connecter</button>
+        <button onclick="loginf();" class="btn-success bouton" id ="btn" value="Se connecter">Se connecter</button>
 
         <p>Vous n'avez pas de compte ? <a href="./crtacc.html">S'inscrire ici</a></p>
     </div>
 </body>
 <script>
     const socket = io("http://dailya.freeboxos.fr:3630");
-    socket.emit("message","loginer");
+    const btn = document.getElementById("btn");
+    document.body.addEventListener("keydown", function (event) {
+        if (event.key == "Enter") {
+            btn.click(); // équivalent d'appuyer dessus
+        }
+    })
     function loginf(){
+        let ip = localStorage.getItem("IP");
         const status = document.getElementById("status");
         const username = document.getElementById("nom").value;
         const mdp = document.getElementById("mdp").value;
-        socket.emit("login",username,mdp, (response) => {
+        socket.emit("login",username,mdp,ip, (response) => {
             if (response == "200"){
-                localStorage.clear();
                 localStorage.setItem("username", username);
-                setuser(username);
                 window.location.href = "./accueil.html";
             }
-            if (response == "no"){
+            if (response == "404"){
                 status.style = "color: red;";
                 status.innerHTML = "<strong>Erreur:</strong> Compte ou mot de passe invalide. :(";
             }
         });
     }
+    
 </script>
 </html>

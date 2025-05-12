@@ -151,7 +151,7 @@
             
             <textarea name="sndcom" id="sndcom" rows="5" placeholder="Entrez votre commentaire ici..."></textarea>
             <br>
-            <button onclick="send();" class="btn-primary boutonPtit">
+            <button onclick="send();" id="btnsend" class="btn-primary boutonPtit">
                 Envoyez
             </button>
             <br><br>
@@ -171,7 +171,15 @@ const socket = io("http://dailya.freeboxos.fr:3630");
 socket.emit("message","Connecté !");
 let statusb = document.getElementById("refresh");
 let comelem = document.getElementById("sndcom");
+let sendbbtn = document.getElementById("btnsend");
+if (localStorage.getItem("username") != "Anonyme"){
 
+} else {
+    sendbbtn.setAttribute("disabled","")
+
+    sendbbtn.innerText = "Vous devez être connecté pour poster un commentaire"
+    sendbbtn.setAttribute("class","btn btn-primary");
+}
 function coms(action){
     if (action == "refresh"){
         socket.emit("refresh","html", (response) => {
@@ -183,22 +191,22 @@ function coms(action){
                 console.log(response)
                 statusb.style = "color: green;"
                 statusb.textContent = "Voici les commentaires trouvés :"
-                console.log(response);
+                decodedres = JSON.parse(response);
                 let c1 = document.getElementById("comzone");
-                c1.innerHTML = response;
+                c1.innerHTML = ""; // reset
+                Object.keys(decodedres).forEach(function(key) {
+                    c1.innerHTML = c1.innerHTML.concat(`<img class='commentpict' src='/users/${decodedres[key]['user']}.png' alt='?'>`);
+                    c1.innerHTML = c1.innerHTML.concat(`<a style='color: ${decodedres[key]['rankColor']}' href='/getaccount.html?usr=${decodedres[key]['user']}'>${decodedres[key]['user']}</a>, le ${decodedres[key]['date']}: <br>${decodedres[key]['comment']}<hr><br>`);
+                });
+                
+                
             }
         });
-    }else{
-        statusb.style = "color: red;";
-        statusb.innerHTML = `
-        <p><strong>La connection avec le serveur externe à échoué !</strong><br>
-        Mais, vous pouvez toujours regarder l'article!</p>
-        `;
     }
 }
 
 function send(){
-    socket.emit("append","html",comelem.value, (response) => {
+    socket.emit("append","html",localStorage.getItem("username"),comelem.value, (response) => {
         if (response == "200"){
             statusb.style = "color: blue;";
             statusb.textContent = "Commentaire enregistré! Actualisation...";
@@ -207,6 +215,9 @@ function send(){
         }
     });
 }
+window.addEventListener('load', function() {
+    coms("refresh");
+});
 
 </script>
 </html>

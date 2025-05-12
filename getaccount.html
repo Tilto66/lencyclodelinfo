@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,17 +43,52 @@
 
             <!-- <li ><a href="#"><i class="fa-solid fa-circle-user"></i></a></li> -->
     </nav>
-    <div class="mainpage article txt">
-        <div class="maincontent">
-            <h2>Bienvenue, <script>document.write(localStorage.getItem("username"))</script>, à <b>l'encyclopédie de l'info</b> !</h2>
-            <h3>Dans cet endroit, vous allez en apprendre sur tout les sujets !</h3>
-            <h3>Prêt à s'informer ? Cliquez <a href="/idx.html">ici</a> où cliquez sur 'Index des articles' sur la barre supérieure de naviguation. Bonne lecture !</h3>
-            <h5>Vous voulez m'envoyer des idées d'articles / des articles ? envoyez moi un mail sur <a href="mailto:lencyclo@yopmail.com">lencyclo@yopmail.com</a></h5>
+
+    <div class="txt article">
+        <h1>Compte de <b><span class="accountreq"></span></b></h1>
+        <div class="details">
+            <img  id="accountpicture">
+            <p><b><span style="font-size: 30px;" id="accountname"></span></b>: <br> 
+            Compte créé le <span style="font-size: 26px;" id="accountdate"></span></p>
+            Rang: <span id="rank"></span>
+            
         </div>
     </div>
+
+
+    
 </body>
 <script>
 socket = io("http://dailya.freeboxos.fr:3630/");
+
+let queryString = window.location.search;
+
+// Créer un objet URLSearchParams avec la chaîne de requête
+
+let searchParams = new URLSearchParams(queryString);
+let user = searchParams.get("usr");
+const name = document.getElementById("accountname")
+const image = document.getElementById("accountpicture");
+const date = document.getElementById("accountdate");
+const rank = document.getElementById("rank");
+
+image.setAttribute("src",`/users/${user}.png`);
+image.setAttribute("alt","Photo de profile introuvable")
+socket.emit("getInfoGeneral",user, (response) => {
+    if (response != "301") {
+        let parsedRes = JSON.parse(response);
+        name.innerHTML = parsedRes['name'];
+        date.innerHTML = parsedRes['date'];
+        rank.innerHTML = parsedRes['rank'];
+        rank.setAttribute("style",`color:${parsedRes['rankColor']}`)
+        name.setAttribute("style",`color:${parsedRes['rankColor']}`)
+        const requsr = document.querySelector(".accountreq");
+requsr.innerHTML = user;
+requsr.setAttribute("style",`color:${parsedRes['rankColor']}`);        
+    } else {
+        console.error("Rip erreur 301 mdr")
+    }
+}); // arg = IP, arg1 = account
 function deco(){
     socket.emit("deco",localStorage.getItem("username"),localStorage.getItem("IP"), (response) => {
         if (response == "200") {
@@ -62,5 +99,16 @@ function deco(){
         }
     })
 }
+window.addEventListener('load', function() {
+  image.classList.add('loaded');
+});
+
 </script>
 </html>
+
+
+
+
+
+
+

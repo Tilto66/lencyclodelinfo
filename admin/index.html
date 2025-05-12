@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <script src="./socket.io.js"></script>
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- Icons lib -->
+    <script src="https://kit.fontawesome.com/f5298b46cc.js" crossorigin="anonymous"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administration de l'encyclopédie de l'info.</title>
+</head>
+<body>
+    <div class="adminfield">
+        <h1>Panel Administrateur</h1>
+        <!-- Champs de connection -->
+        <input type="text" id="nm" placeholder="&#xf2bd;" style="font-family:Arial, FontAwesome"><br>
+        <input type="password" name="" id="mdp" placeholder="&#xf084;" style="font-family: Arial, FontAwesome;"><br><br>
+        <button class="btn btn-success" onclick="login();">Se connecter</button>
+    </div>
+</body>
+<script>
+socket = io("http://dailya.freeboxos.fr:3630"); // se connecte à mon serveur socket.io
+username = document.getElementById("nm").value;
+password = document.getElementById("mdp").value;
+err = `
+<p style="color: red;text-align: center;">Informations incorrectes !</p> 
+`
+
+function login(){
+    
+    socket.emit("adminLogin",username,password,localStorage.getItem("IP"), (response) => {
+        if (response !== "301"){
+            localStorage.setItem("ADMIN",response) // pratique dangeureuse je sais mais trop la flemme !
+            window.location.href = "/admin/comptes.html";
+        } else {
+            document.append(err);
+        }
+    });
+}
+</script>
+</html>

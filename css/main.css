@@ -2,10 +2,13 @@
 html{
     background-color: rgb(255, 255, 255);
 }
-/*.txt{
-    background-color: white;
-    color: black;
-}*/
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    display: table
+}
 .bouton{
     height: 2cm;
     width: 20cm;
@@ -45,4 +48,64 @@ tip{
 textarea{
     border: none;
     background-color:rgb(208, 220, 231);
+}
+
+.center{
+    text-align: center;
+    justify-content: center;
+}
+
+.adminfield{
+    text-align: center;
+    input::placeholder{
+        color: grey;
+        text-align: center;
+        margin-top: 0%;
+    }
+}
+
+.mainpage{
+    width: 850px;
+    height: 350px;
+    text-align: center;
+    justify-content: center;
+    margin-top: 50px;
+    margin: auto;
+    margin-top: 20px;
+    .maincontent { /* Centre dans la div : j'ai galéré à trouver ca..; */
+        position: relative;
+        left: 50%;
+        top: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+    }
+}
+
+.usericon {
+    text-align: right;
+}
+.details {
+    margin-left: 20px;
+    margin-bottom: 40px;
+    width: 300px;
+    /* border: 2px solid;  */
+    font-size: large;
+    img#accountpicture{
+        border: 1rem solid;
+        width: 255;
+        max-height: 200px;
+    }
+    img#accountpicture.loaded{
+        transition: ease-in-out 3s;
+        border-radius: 1000px;
+    }
+    
+}
+
+img.commentpict {
+    width: 40px;
+    height: 50px;
+    border: 1px solid;
+    border-radius: 30px;
+    margin-right: 3px;
 }

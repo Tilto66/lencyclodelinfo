@@ -25,35 +25,44 @@
         <h3 id="info">Vous êtes sur une version <strong>experimentale</strong>  du site !</h3>
     </div>
     <div class="txt">
-        <p>Remplissez les données suivantes pour se connecter:</p>
-        <br>
-        <p id="status"></p>
-        <label for="text">Nom d'utilisateur</label>
-        <input type="text" class="form-control" required id="nom" placeholder="Entrez ici...">
-        <label for="mdp">Mot de passe:</label>
-        <input type="password" class="form-control" id="mdp" required placeholder="Entrez ici...">
-        <br>
-        <button onclick="signinf();" class="btn-success bouton" value="Se connecter">S'inscrire</button>
-
+        <form enctype="multipart/form-data" method="post" action="upload.php">
+            <p>Remplissez les données suivantes pour se connecter:</p>
+            <br>
+            <p id="status"></p>
+            <label for="text">Nom d'utilisateur</label>
+            <input type="text" class="form-control" required id="nom" name="username" placeholder="Entrez ici...">
+            <label for="mdp">Mot de passe:</label>
+            <input type="password" class="form-control" id="mdp" required placeholder="Entrez ici...">
+            <br>
+            <label for="">Image de profil (extension PNG UNIQUMENT)</label>
+            <input type="file" id="avatar" name="file" accept="image/png" />
+            <br><br>
+            <button onclick="signinf();" class="btn-success bouton" id="sub" value="Se connecter">S'inscrire</button>
+        </form>
     </div>
 </body>
 <script>
-    const socket = io("http://109.17.132.241:3630");
+    const socket = io("http://dailya.freeboxos.fr:3630");
     socket.emit("message","create accounter");
     function signinf(){
         const status = document.getElementById("status");
         const username = document.getElementById("nom").value;
         const mdp = document.getElementById("mdp").value;
+        const btn = document.querySelector("#sub");
         if (username === " " | mdp ===" "){
             status.style = "color: blue;";
             status.innerhtml = "Veuillez insérer <strong>des données</strong> dans les champs requis."
+            btn.setAttribute("type","submit");
+            btn.setAttribute("onclick","");
+            btn.click();
         }else{
             socket.emit("addaccount",username,mdp, (response) => {
                 if (response == "200"){
                     status.style = "color: green;";
                     status.innerHTML = "Un grand <strong>Merci</strong> de vous être inscrit ! :) :)";
+                    btn.addAt
                 }
-                if (response == "same"){
+                if (response == "300"){
                     status.style = "color: red;";
                     status.innerHTML = "<strong>Erreur:</strong> Un compte est sous le même nom d'utilisateur ou cet un nom d'administrateur";
                     username, mdp = "", "";

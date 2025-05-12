@@ -21,6 +21,7 @@
     <title>L'encyclopédie de l'info - Le CSS</title>
 </head>
 <body>
+    <h1>HS en réparation temporaire ne pas toucher :(</h1>
     <div class="article">
         <div class="titre">
             <h1>Le CSS</h1>
@@ -70,7 +71,7 @@
         <div id="class">
             <h2>Modifier les éléments d'une classe</h2>
         <br>
-        <p>Sur cette section, nous allons modifier l'appareance de tous les éléments <b>appartenant a une même classe.</b><br>
+        <p>Sur cette section, nous allons modifier l'apparence de tous les éléments <b>appartenant a une même classe.</b><br>
         En css, les classes sont préfixées par <code>.</code><br>
         Donc nous allons écrire: <br>
         <code>
@@ -143,15 +144,19 @@
     <div class="comms">
         <h1>Commentaires:</h1>
         <p id="refresh"></p>
+    <div class="comms">
+        <h1>Commentaires:</h1>
+        <p id="refresh"></p>
         <div id="coms">
             <p id="comzone">
+
             </p>
             <br><br><br>
 
             
             <textarea name="sndcom" id="sndcom" rows="5" placeholder="Entrez votre commentaire ici..."></textarea>
             <br>
-            <button onclick="send();" class="btn-primary boutonPtit">
+            <button onclick="send();" id="btnsend" class="btn-primary boutonPtit">
                 Envoyez
             </button>
             <br><br>
@@ -165,48 +170,58 @@
         </center>
     </div>
 </body>
-
 <script>
 
-    const socket = io("http://dailya.freeboxos.fr:3630");
-    socket.emit("message","Connecté !");
-    let statusb = document.getElementById("refresh");
-    let comelem = document.getElementById("sndcom");
-    
-    function coms(action){
-        if (action == "refresh"){
-            socket.emit("refresh","html", (response) => {
-                if (response == null){
-                    statusb.style = "color: red;";
-                    statusb.style = "color: red;";
-                    statusb.textContent = "Aucun nouveaux commentaires.Essayez de reafraichir plus tard.";
-                }else if (response !== null) {
-                    console.log(response)
-                    statusb.style = "color: green;"
-                    statusb.textContent = "Voici les commentaires trouvés :"
-                    console.log(response);
-                    let c1 = document.getElementById("comzone");
-                    c1.innerHTML = response;
-                }
-            });
-        }else{
-            statusb.style = "color: red;";
-            statusb.innerHTML = `
-            <p><strong>La connection avec le serveur externe à échoué !</strong><br>
-            Mais, vous pouvez toujours regarder l'article!</p>
-            `;
-        }
-    }
-    
-    function send(){
-        socket.emit("append","html",comelem.value, (response) => {
-            if (response == "200"){
-                statusb.style = "color: blue;";
-                statusb.textContent = "Commentaire enregistré! Actualisation...";
-                coms("refresh");
-    
+const socket = io("http://dailya.freeboxos.fr:3630");
+socket.emit("message","Connecté !");
+let statusb = document.getElementById("refresh");
+let comelem = document.getElementById("sndcom");
+let sendbbtn = document.getElementById("btnsend");
+if (localStorage.getItem("username") != "Anonyme"){
+
+} else {
+    sendbbtn.setAttribute("disabled","")
+
+    sendbbtn.innerText = "Vous devez être connecté pour poster un commentaire"
+    sendbbtn.setAttribute("class","btn btn-primary");
+}
+function coms(action){
+    if (action == "refresh"){
+        socket.emit("refresh","css", (response) => {
+            if (response == null){
+                statusb.style = "color: red;";
+                statusb.style = "color: red;";
+                statusb.textContent = "Aucun nouveaux commentaires.Essayez de reafraichir plus tard.";
+            }else if (response !== null) {
+                console.log(response)
+                statusb.style = "color: green;"
+                statusb.textContent = "Voici les commentaires trouvés :"
+                decodedres = JSON.parse(response);
+                let c1 = document.getElementById("comzone");
+                c1.innerHTML = ""; // reset
+                Object.keys(decodedres).forEach(function(key) {
+                    c1.innerHTML = c1.innerHTML.concat(`<img class='commentpict' src='/users/${decodedres[key]['user']}.png' alt='?'>`);
+                    c1.innerHTML = c1.innerHTML.concat(`<a style='color: ${decodedres[key]['rankColor']}' href='/getaccount.html?usr=${decodedres[key]['user']}'>${decodedres[key]['user']}</a>, le ${decodedres[key]['date']}: <br>${decodedres[key]['comment']}<hr><br>`);
+                });
+                
+                
             }
         });
     }
-    </script>
+}
+
+function send(){
+    socket.emit("append","css",localStorage.getItem("username"),comelem.value, (response) => {
+        if (response == "200"){
+            statusb.style = "color: blue;";
+            statusb.textContent = "Commentaire enregistré! Actualisation...";
+            coms("refresh");
+
+        }
+    });
+}
+window.addEventListener('load', function() {
+    coms("refresh");
+});
+</script>
 </html>

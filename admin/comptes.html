@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="./socket.io.js"></script>
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administration de l'encyclopédie de l'info.</title>
+</head>
+<body>
+    <h2>Gérer les comptes</h2>
+    <p id="status"></p>
+    <input type="text" name="" id="username">
+    <input type="password" name="" id="mdp">
+    <button class="btn-error btn" onclick="deleteaccount();">Supprimer le compte</button>
+    <button class="btn btn-sucecss" onclick="signinf();">Créer un compte</button>
+</body>
+<script>
+const socket = io("http://dailya.freeboxos.fr:3630");
+socket.emit("message","Admin_comptes!")
+function deleteaccount(){
+    let field = document.getElementById("compte").value
+    let status = document.getElementById("status")
+    socket.emit("delaccount",field, (response) => {
+        if (response == 200){
+            status.style = "color: green;";
+            status.innerHTML = "<strong>Succés !</strong>";
+        }
+        if (response == 100){
+            status.style = "color: red;";
+            status.innerHTML = "<strong>Erreur:</strong> Le compte n'existe pas."
+        }
+    });
+}
+
+function signinf(){
+    const username = document.getElementById("username");
+    const mdp = document.getElementById("mdp").value;
+
+    socket.emit("addaccount",username.value,mdp, (response) => {
+        if (response == "200"){
+            username.style = "color: green;";
+            username.value = "200";
+        }
+        if (response == "same"){
+            username.style = "color: red;";
+            username.value = "100";
+            mdp = "", "";
+
+        }
+    });
+    
+}
+</script>
+</html>

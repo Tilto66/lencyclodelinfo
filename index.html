@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head></head>
     <!-- Mon stylesheet -->
     <link rel="stylesheet" href="./css/main.css">
     <!-- Mon js -->
@@ -31,4 +31,15 @@
         
     </div>
 </body>
+<script>
+// prenons l'IP pour communiquer avec l'API !
+fetch('https://api.ipify.org?format=json')
+.then(response => response.json())
+.then(data => {
+localStorage.setItem("IP",data.ip);
+})
+.catch(error => {
+document.write("Erreur fatale:", error);
+});
+</script>
 </html>
